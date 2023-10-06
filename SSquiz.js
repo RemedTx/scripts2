@@ -1,7 +1,4 @@
 
-<script>
-
-
 // Remove submit with enter
 $(document).keypress(
     function(event){
@@ -316,6 +313,3 @@ sliderContainer.addEventListener("transitionend", function () {
 
 // Initialize the sleep score display based on the initial slide
 updateSleepScoreDisplay();
-
-
-</script>

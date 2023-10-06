@@ -111,7 +111,7 @@ function updateLoadingBar() {
     const currentSlideIndex = getCurrentSlideIndex();
     // Between 1-13 : 50 - 75% -> 13 ELEMENTS
     const percentage = Math.round(
-        0 + currentSlideIndex * 25 / 13
+        0 + currentSlideIndex * 100 / 37
     )
     document.getElementById('loading-bar').setAttribute("style",`display:flex;width:${percentage}%`);
     document.getElementById('loading-bar').style.width=`${percentage}%`;

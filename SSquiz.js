@@ -318,3 +318,14 @@ updateSleepScoreDisplay();
 document.getElementById("email-next-button").addEventListener("click", function() {
     submitForm(); // Trigger the form submission when the button is clicked
 });
+
+// Function to add "hey" to the first slide
+function addHeyToFirstSlide() {
+    const firstSlide = document.querySelector(".w-slide:first-child"); // Select the first slide
+    const heyText = document.createElement("p"); // Create a <p> element
+    heyText.textContent = "hey"; // Set the text content to "hey"
+    firstSlide.appendChild(heyText); // Append the <p> element to the first slide
+}
+
+// Call the function to add "hey" to the first slide
+addHeyToFirstSlide();

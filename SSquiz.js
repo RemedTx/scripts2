@@ -313,3 +313,8 @@ sliderContainer.addEventListener("transitionend", function () {
 
 // Initialize the sleep score display based on the initial slide
 updateSleepScoreDisplay();
+
+// Add an event listener to the "See my results" button
+document.getElementById("email-next-button").addEventListener("click", function() {
+    submitForm(); // Trigger the form submission when the button is clicked
+});

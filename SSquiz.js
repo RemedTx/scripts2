@@ -287,13 +287,12 @@ function calculateSleepScore() {
            
         }
     });
-
+    console.log("Sleep Score Elements:", scoreElements);
+    console.log("Sleep Score:", sleepScore); // Add this line for debugging
     return sleepScore;
-    console.log(`Sleep Score #1 Updated: ${sleepScore}`);
+    
 }
-// Example usage:
-const sleepScore = calculateSleepScore();
-console.log(`Your Sleep Score: ${sleepScore}`);
+
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
@@ -302,7 +301,7 @@ function updateSleepScoreDisplay() {
 
     if (sleepScoreDisplay) {
         sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
-        console.log(`Sleep Score Updated: ${sleepScore}`);
+        
     }
 }
 

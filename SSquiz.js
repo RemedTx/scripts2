@@ -273,23 +273,26 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
-// Function to calculate the sleep score based on user choices
+// Function to calculate the sleep score based on selected button values
 function calculateSleepScore() {
-    const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
+    // Get all radio inputs from slides 5 to 11
+    const selectedButtons = document.querySelectorAll('.w-slide:nth-child(n+5):nth-child(-n+11) input[type="radio"]:checked');
     let sleepScore = 0;
 
-    scoreElements.forEach(element => {
-        // You can adjust the scoring logic based on your specific choices
-        const choiceValue = parseInt(element.value);
-
-        // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 1 && choiceValue <= 5) {
+    // Sum up the values of the selected buttons
+    selectedButtons.forEach(button => {
+        const choiceValue = parseInt(button.value);
+        if (!isNaN(choiceValue)) {
             sleepScore += choiceValue;
         }
     });
 
     return sleepScore;
 }
+
+// Example usage:
+const sleepScore = calculateSleepScore();
+console.log(`Your Sleep Score: ${sleepScore}`);
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
@@ -305,14 +308,8 @@ function updateSleepScoreDisplay() {
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
     
-    // Check if the current slide is within the range of slides for calculating the sleep score
-    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+    // Check if the current slide is slide 12
+    if (currentSlideIndex === 12) {
         updateSleepScoreDisplay();
     }
 });
-
-// Initialize the sleep score display based on the initial slide
-updateSleepScoreDisplay();
-
-
-

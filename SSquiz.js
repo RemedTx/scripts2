@@ -273,25 +273,25 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
-// Function to calculate the sleep score based on selected button values
 function calculateSleepScore() {
     // Get all radio inputs from slides 5 to 11
     const selectedButtons = document.querySelectorAll('.w-slide:nth-child(n+5):nth-child(-n+11) input[type="radio"]:checked');
     let sleepScore = 0;
 
-    // Sum up the values of the selected buttons
+    // Sum up the values of the selected buttons (assuming values are between 0 and 4)
     selectedButtons.forEach(button => {
         const choiceValue = parseInt(button.value);
-        if (!isNaN(choiceValue)) {
+        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
             sleepScore += choiceValue;
-           
         }
     });
-    console.log("Sleep Score Elements:", scoreElements);
-    console.log("Sleep Score:", sleepScore); // Add this line for debugging
+
+    console.log("Selected Buttons:", selectedButtons);
+    console.log("Sleep Score:", sleepScore);
+
     return sleepScore;
-    
 }
+
 
 
 // Function to update the sleep score display on slide 12

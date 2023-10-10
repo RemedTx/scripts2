@@ -284,33 +284,11 @@ function calculateSleepScore() {
         const choiceValue = parseInt(button.value);
         if (!isNaN(choiceValue)) {
             sleepScore += choiceValue;
+            console.log(`Sleep Score Updated: ${sleepScore}`);
         }
     });
 
     return sleepScore;
 }
 
-// Example usage:
-const sleepScore = calculateSleepScore();
-console.log(`Your Sleep Score: ${sleepScore}`);
-
-// Function to update the sleep score display on slide 12
-function updateSleepScoreDisplay() {
-    const sleepScore = calculateSleepScore();
-    const sleepScoreDisplay = document.getElementById("sleep-score-display");
-
-    if (sleepScoreDisplay) {
-        sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
-        console.log(`Sleep Score Updated: ${sleepScore}`);
-    }
-}
-
-// Add an event listener to calculate and update the sleep score when the slide changes
-sliderContainer.addEventListener("transitionend", function () {
-    const currentSlideIndex = getCurrentSlideIndex();
-    
-    // Check if the current slide is slide 12
-    if (currentSlideIndex === 12) {
-        updateSleepScoreDisplay();
-    }
 });

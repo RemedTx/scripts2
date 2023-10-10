@@ -301,6 +301,7 @@ function updateSleepScoreDisplay() {
 
     if (sleepScoreDisplay) {
         sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+        console.log(`Sleep Score Updated: ${sleepScore}`);
     }
 }
 

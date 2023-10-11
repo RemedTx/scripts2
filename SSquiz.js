@@ -260,7 +260,7 @@ function hideArrowOnFirstSlide() {
     const currentSlideIndex = getCurrentSlideIndex();
     const arrowElement = document.getElementById("previous-button");
     
-    if (currentSlideIndex === 1) { // Check if it's the first slide
+    if (currentSlideIndex === 1 ) { // Check if it's the first slide
         arrowElement.style.display = "none"; // Hide the arrow
     } else {
         arrowElement.style.display = "block"; // Show the arrow for other slides
@@ -371,6 +371,7 @@ $('#final-button').on('click', function() {
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
+    arrowElement.style.display = "none"; // Hide the arrow
 
     // Play animation
     const player = document.querySelector("lottie-player");

@@ -273,34 +273,43 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
-// After email input
-$('.email-next-button').on('click', validateEmailForm);
+// Function to calculate the sleep score based on user choices
+function calculateSleepScore() {
+    const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
+    let sleepScore = 0;
 
-function validateEmailForm() {
-    const formPushUrl = "https://europe-west1-test-firebase-1240d.cloudfunctions.net/sleepQuiz";
+    scoreElements.forEach(element => {
+        // You can adjust the scoring logic based on your specific choices
+        const choiceValue = parseInt(element.value);
 
-    // Check for errors
-    let error = "";
-    const inputs = $('input:not([aria-hidden])');
-    const emailInputs = $(inputs).filter('[type="email"]').toArray();
-    if (emailInputs.length > 0 && !emailInputs.some((el) => $(el).val().indexOf('@') !== -1 && $(el).val().indexOf('.') !== -1)) {
-        error = "Please enter a valid email";
-    }
-    // If not error -> submit form
-    if (!error) {
-        sendSlack(true, emailInputs[0].value);
-        try {
-            navigator.sendBeacon(formPushUrl, JSON.stringify({sheet: 1, data: {"email": emailInputs[0].value}}));
-        } catch (err) {
-            console.log(err);
+        // Ensure that the choiceValue is a number and within the expected range
+        if (!isNaN(choiceValue) && choiceValue >= 1 && choiceValue <= 5) {
+            sleepScore += choiceValue;
         }
-        error = "";
-        goToNextSlide(this);
+    });
+
+    return sleepScore;
+}
+
+// Function to update the sleep score display on slide 12
+function updateSleepScoreDisplay() {
+    const sleepScore = calculateSleepScore();
+    const sleepScoreDisplay = document.getElementById("sleep-score-display");
+
+    if (sleepScoreDisplay) {
+        sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
     }
-     
-     else {
-     alert(error);
-     }
+}
 
-
+// Add an event listener to calculate and update the sleep score when the slide changes
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    
+    // Check if the current slide is within the range of slides for calculating the sleep score
+    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+        updateSleepScoreDisplay();
+    }
 });
+
+// Initialize the sleep score display based on the initial slide
+updateSleepScoreDisplay();

@@ -314,6 +314,26 @@ sliderContainer.addEventListener("transitionend", function () {
 // Initialize the sleep score display based on the initial slide
 updateSleepScoreDisplay();
 
+// Post function
+async function postRequest(url, data) {
+    try {
+        return await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+    } catch (error) {
+        return error;
+    }
+}
+
+function sendSlack(submitted, email) {
+    const slackUrl = "https://europe-west1-test-firebase-1240d.cloudfunctions.net/postSlackMessage";
+    let data = {
+        userName: email,
+        warningType: 'QUIZ',
+        warningContent: submitted? 'Someone submitted the form!' : 'Someone went to the final question!',
+        emoji: ':ghost:',
+        redirectUrl: 'https://www.moonalisa.co',
+    };
+    postRequest(slackUrl, data);
+}
 // After email input
 $('.email-next-button').on('click', validateEmailForm);
 
@@ -343,3 +363,4 @@ function validateEmailForm() {
      alert(error);
      }
 }
+

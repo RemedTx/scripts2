@@ -371,13 +371,17 @@ $('#final-button').on('click', function() {
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
-    
+   // Hide the previous arrow
+    leftArrow.style.display = 'none';
 
+    
     // Play animation
     const player = document.querySelector("lottie-player");
     player.load(lottieSrc);
     setTimeout(() => {
         loaderContainer.style.display = 'none';
+        leftArrow.style.display = 'block'; // Show the previous arrow
+        goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })
 

@@ -273,50 +273,34 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
-// Function to calculate the sleep score based on selected button values
-function calculateSleepScore() {
-    // Get all radio inputs from slides 5 to 11
-    const selectedButtons = document.querySelectorAll('.w-slide:nth-child(n+5):nth-child(-n+11) input[type="radio"]:checked');
-    let sleepScore = 0;
+// After email input
+$('.email-next-button').on('click', validateEmailForm);
 
-    // Loop through the selected buttons
-    selectedButtons.forEach(button => {
-        // Extract the numeric value from the button label using regular expression
-        const labelText = button.parentNode.querySelector('.w-form-label').textContent;
-        const match = labelText.match(/\d+/);
-        
-        if (match) {
-            const choiceValue = parseInt(match[0]);
-            if (!isNaN(choiceValue)) {
-                sleepScore += choiceValue;
-            }
+function validateEmailForm() {
+    const formPushUrl = "https://europe-west1-test-firebase-1240d.cloudfunctions.net/sleepQuiz";
+
+    // Check for errors
+    let error = "";
+    const inputs = $('input:not([aria-hidden])');
+    const emailInputs = $(inputs).filter('[type="email"]').toArray();
+    if (emailInputs.length > 0 && !emailInputs.some((el) => $(el).val().indexOf('@') !== -1 && $(el).val().indexOf('.') !== -1)) {
+        error = "Please enter a valid email";
+    }
+    // If not error -> submit form
+    if (!error) {
+        sendSlack(true, emailInputs[0].value);
+        try {
+            navigator.sendBeacon(formPushUrl, JSON.stringify({sheet: 1, data: {"email": emailInputs[0].value}}));
+        } catch (err) {
+            console.log(err);
         }
-    });
-
-    console.log("Sleep Score:", sleepScore); // Add this line for debugging
-    return sleepScore;
-}
-
-
-
-// Function to update the sleep score display on slide 12
-function updateSleepScoreDisplay() {
-    const sleepScore = calculateSleepScore();
-    const sleepScoreDisplay = document.getElementById("sleep-score-display");
-
-    if (sleepScoreDisplay) {
-        sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
-        
+        error = "";
+        goToNextSlide(this);
     }
+     
+     else {
+     alert(error);
+     }
 }
-
-// Add an event listener to calculate and update the sleep score when the slide changes
-sliderContainer.addEventListener("transitionend", function () {
-    const currentSlideIndex = getCurrentSlideIndex();
-    
-    // Check if the current slide is slide 12
-    if (currentSlideIndex === 12) {
-        updateSleepScoreDisplay();
-    }
 
 });

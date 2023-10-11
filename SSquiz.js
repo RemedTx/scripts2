@@ -301,6 +301,6 @@ function validateEmailForm() {
      else {
      alert(error);
      }
-}
+
 
 });

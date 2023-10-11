@@ -314,4 +314,32 @@ sliderContainer.addEventListener("transitionend", function () {
 // Initialize the sleep score display based on the initial slide
 updateSleepScoreDisplay();
 
+// After email input
+$('.email-next-button').on('click', validateEmailForm);
 
+function validateEmailForm() {
+    const formPushUrl = "https://europe-west1-test-firebase-1240d.cloudfunctions.net/sleepQuiz";
+
+    // Check for errors
+    let error = "";
+    const inputs = $('input:not([aria-hidden])');
+    const emailInputs = $(inputs).filter('[type="email"]').toArray();
+    if (emailInputs.length > 0 && !emailInputs.some((el) => $(el).val().indexOf('@') !== -1 && $(el).val().indexOf('.') !== -1)) {
+        error = "Please enter a valid email";
+    }
+    // If not error -> submit form
+    if (!error) {
+        sendSlack(true, emailInputs[0].value);
+        try {
+            navigator.sendBeacon(formPushUrl, JSON.stringify({sheet: 1, data: {"email": emailInputs[0].value}}));
+        } catch (err) {
+            console.log(err);
+        }
+        error = "";
+        goToNextSlide(this);
+    }
+     
+     else {
+     alert(error);
+     }
+}

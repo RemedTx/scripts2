@@ -363,4 +363,20 @@ function validateEmailForm() {
      alert(error);
      }
 }
+const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2tpZmJA6.json"
+
+// Just before last view : progress bar animation
+$('#lottie-container').html(`<lottie-player autoplay mode="normal" speed=1 style="width: 400px"></lottie-player>`);
+$('#final-button').on('click', function() {
+    // Display animation container
+    let loaderContainer = document.getElementById("final-progress");
+    loaderContainer.style.display = 'block';
+
+    // Play animation
+    const player = document.querySelector("lottie-player");
+    player.load(lottieSrc);
+    setTimeout(() => {
+        loaderContainer.style.display = 'none';
+    }, 15000);
+})
 

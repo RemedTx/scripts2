@@ -371,7 +371,7 @@ $('#final-button').on('click', function() {
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
-    arrowElement.style.display = "none"; // Hide the arrow
+    
 
     // Play animation
     const player = document.querySelector("lottie-player");

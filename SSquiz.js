@@ -328,8 +328,8 @@ function sendSlack(submitted, email) {
     let data = {
         userName: email,
         warningType: 'QUIZ',
-        warningContent: submitted? 'Someone submitted the form!' : 'Someone went to the final question!',
-        emoji: ':ghost:',
+        warningContent: submitted? 'Someone submitted the Stellar Sleep form!' : 'Someone went to the final question!',
+        emoji: '🐶',
         redirectUrl: 'https://www.moonalisa.co',
     };
     postRequest(slackUrl, data);

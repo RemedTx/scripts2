@@ -282,7 +282,7 @@ for (let i = 0; i < slides.length; i++) {
     radioInputs.forEach((input, index) => {
         input.setAttribute("data-name", `${i}`);
         input.setAttribute("name", `${i}`);
-        input.setAttribute("value", index + 1); // Setting numerical values
+        input.setAttribute("value", index ); // Setting numerical values
     });
 
 }
@@ -329,8 +329,7 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
-// Initialize the sleep score display based on the initial slide
-updateSleepScoreDisplay();
+
 
 // Post function
 async function postRequest(url, data) {

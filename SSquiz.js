@@ -273,6 +273,20 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
+// Add attributes to checkbox and radioinputs
+for (let i = 0; i < slides.length; i++) {
+    const slide = slides[i];
+
+    // RADIOS
+    const radioInputs = slide.querySelectorAll('input[type="radio"]');
+    radioInputs.forEach((input, index) => {
+        input.setAttribute("data-name", `${i}`);
+        input.setAttribute("name", `${i}`);
+        input.setAttribute("value", index + 1); // Setting numerical values
+    });
+
+}
+
 // Function to calculate the sleep score based on user choices
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');

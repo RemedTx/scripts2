@@ -288,6 +288,8 @@ function calculateSleepScore() {
         }
     });
 
+    console.log("Sleep score calculated: ", sleepScore);
+
     return sleepScore;
 }
 
@@ -298,11 +300,13 @@ function updateSleepScoreDisplay() {
 
     if (sleepScoreDisplay) {
         sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+        console.log("Sleep score display updated with: ", sleepScore);
     }
 }
 
 // Add an event listener to calculate and update the sleep score when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
+    console.log("Slide transition detected");
     const currentSlideIndex = getCurrentSlideIndex();
     
     // Check if the current slide is within the range of slides for calculating the sleep score

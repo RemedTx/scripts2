@@ -297,7 +297,7 @@ function calculateSleepScore() {
         const choiceValue = parseInt(element.value);
 
         // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 1 && choiceValue <= 5) {
+        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
             sleepScore += choiceValue;
         }
     });
@@ -310,11 +310,9 @@ function calculateSleepScore() {
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
-
-    // Check if the current slide is 12 and update the element accordingly
     if (currentSlideIndex === 12) {
         const sleepScore = calculateSleepScore();
-        const sleepScoreDisplay = document.getElementById("sleep-score-display-12");
+        const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
         if (sleepScoreDisplay) {
             sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
@@ -327,8 +325,8 @@ function updateSleepScoreDisplay() {
 sliderContainer.addEventListener("transitionend", function () {
     console.log("Slide transition detected");
     const currentSlideIndex = getCurrentSlideIndex();
-
-    // Check if the current slide is between 5 and 11 and trigger the updateSleepScoreDisplay function
+    
+    // Check if the current slide is within the range of slides for calculating the sleep score
     if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
         updateSleepScoreDisplay();
     }

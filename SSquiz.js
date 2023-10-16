@@ -318,6 +318,7 @@ function updateSleepScoreDisplay() {
         console.log("Sleep score display updated with: ", sleepScore);
         if sleepScore >= 10{
             sleepLevelDisplay.textContent = `Clinical Insomnia`
+        }
     }
 }
 

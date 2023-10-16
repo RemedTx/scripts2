@@ -297,7 +297,7 @@ function calculateSleepScore() {
         const choiceValue = parseInt(element.value);
 
         // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
+        if (!isNaN(choiceValue) && choiceValue >= 1 && choiceValue <= 5) {
             sleepScore += choiceValue;
         }
     });
@@ -309,15 +309,15 @@ function calculateSleepScore() {
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
-    const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 12) {
-        const sleepScore = calculateSleepScore();
-        const sleepScoreDisplay = document.getElementById("sleep-score-display");
+    const sleepScore = calculateSleepScore();
+    const sleepScoreDisplay = document.getElementById("sleep-score-display");
+    const sleepLevelDisplay = document.getElementById("sleep-level");
 
-        if (sleepScoreDisplay) {
-            sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
-            console.log("Sleep score display updated with: ", sleepScore);
-        }
+    if (sleepScoreDisplay) {
+        sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+        console.log("Sleep score display updated with: ", sleepScore);
+        if sleepScore >= 10{
+            sleepLevelDisplay.textContent = `Clinical Insomnia`
     }
 }
 
@@ -405,3 +405,6 @@ $('#final-button').on('click', function() {
     }, 15000);
 })
 
+//Display the insomnia condition
+function insomniaLevel(){
+    if 

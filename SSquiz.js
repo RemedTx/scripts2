@@ -406,6 +406,3 @@ $('#final-button').on('click', function() {
     }, 15000);
 })
 
-//Display the insomnia condition
-function insomniaLevel(){
-    if 

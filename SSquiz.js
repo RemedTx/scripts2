@@ -287,6 +287,9 @@ for (let i = 0; i < slides.length; i++) {
 
 }
 
+// Initialize a variable to store the score from slides 1 to 4
+let invalidSleepScore = 0;
+
 // Function to calculate the sleep score based on user choices from slides 5 to 11
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
@@ -304,6 +307,9 @@ function calculateSleepScore() {
                 sleepScore += choiceValue;
             }
         });
+
+        // Subtract the score from invalid slides (slides 1 to 4)
+        sleepScore -= invalidSleepScore;
 
         console.log("Sleep score calculated: ", sleepScore);
     } else {
@@ -337,7 +343,13 @@ sliderContainer.addEventListener("transitionend", function () {
     if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
         updateSleepScoreDisplay();
     }
+
+    // If on slides 1 to 4, calculate the invalid sleep score
+    if (currentSlideIndex >= 1 && currentSlideIndex <= 4) {
+        invalidSleepScore = calculateSleepScore();
+    }
 });
+
 
 
 

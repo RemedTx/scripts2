@@ -318,7 +318,7 @@ function calculateSleepScore() {
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index for updating sleep score display: ", currentSlideIndex);
-    const sleepScore = currentSlideIndex >= 5 && currentSlideIndex <= 11 ? calculateSleepScore() : 0;
+    const sleepScore = calculateSleepScore();
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
     if (sleepScoreDisplay && currentSlideIndex === 12) {
@@ -333,10 +333,7 @@ sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index on transition: ", currentSlideIndex);
 
-    // Check if the current slide is within the range of slides for calculating the sleep score
-    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
-        updateSleepScoreDisplay();
-    }
+    
 });
 
 

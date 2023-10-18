@@ -287,18 +287,19 @@ for (let i = 0; i < slides.length; i++) {
 
 }
 
-// Initialize a variable to store the score from slides 1 to 4
-let invalidSleepScore = 0;
-
 // Function to calculate the sleep score based on user choices from slides 5 to 11
 function calculateSleepScore() {
-    const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
     let sleepScore = 0;
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index for sleep score calculation: ", currentSlideIndex);
 
     // Only calculate sleep score if the current slide index is between 5 and 11 (inclusive)
     if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+        const scoreElements = Array.from(document.querySelectorAll('input[type="radio"]:checked')).filter(element => {
+            const elementSlideIndex = parseInt(element.getAttribute("data-name"));
+            return elementSlideIndex >= 5 && elementSlideIndex <= 11;
+        });
+
         scoreElements.forEach(element => {
             const choiceValue = parseInt(element.value);
 
@@ -308,9 +309,6 @@ function calculateSleepScore() {
             }
         });
 
-        // Subtract the score from invalid slides (slides 1 to 4)
-        sleepScore -= invalidSleepScore;
-
         console.log("Sleep score calculated: ", sleepScore);
     } else {
         sleepScore = 0; // Reset sleep score if not within the valid range
@@ -319,6 +317,7 @@ function calculateSleepScore() {
 
     return sleepScore;
 }
+
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
@@ -344,15 +343,8 @@ sliderContainer.addEventListener("transitionend", function () {
         updateSleepScoreDisplay();
     }
 
-    // If on slides 1 to 4, calculate the invalid sleep score
-    if (currentSlideIndex >= 1 && currentSlideIndex <= 4) {
-        invalidSleepScore = calculateSleepScore();
-    }
+    
 });
-
-
-
-
 
 
 

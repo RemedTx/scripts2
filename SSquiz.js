@@ -308,6 +308,7 @@ function calculateSleepScore() {
         console.log("Sleep score calculated: ", sleepScore);
     } else {
         sleepScore = 0; // Reset sleep score if not within the valid range
+        console.log("No sleep score", sleepScore);
     }
 
     return sleepScore;

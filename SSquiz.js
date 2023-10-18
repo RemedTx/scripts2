@@ -318,7 +318,7 @@ function updateSleepScoreDisplay() {
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
         if (sleepScoreDisplay) {
-            sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+            sleepScoreDisplay.textContent = `${sleepScore}`;
             console.log("Sleep score display updated with: ", sleepScore);
         }
     }

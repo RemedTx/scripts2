@@ -293,7 +293,7 @@ function calculateSleepScore() {
     let sleepScore = 0;
 
     // Adjust the index range to slides 4 to 11 (inclusive)
-    if (getCurrentSlideIndex() >= 4 && getCurrentSlideIndex() <= 11) {
+    if (getCurrentSlideIndex() >= 5 && getCurrentSlideIndex() <= 11) {
         scoreElements.forEach(element => {
             // You can adjust the scoring logic based on your specific choices
             const choiceValue = parseInt(element.value);

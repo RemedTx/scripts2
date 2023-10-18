@@ -289,13 +289,14 @@ for (let i = 0; i < slides.length; i++) {
 
 // Function to calculate the sleep score based on user choices from slides 5 to 11
 function calculateSleepScore() {
+    const currentSlideIndex = getCurrentSlideIndex();
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
     let sleepScore = 0;
 
     // Adjust the index range to slides 5 to 11 (inclusive)
-    if (getCurrentSlideIndex() >= 5 && getCurrentSlideIndex() <= 11) {
+    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
         scoreElements.forEach(element => {
-            // Adjust the scoring logic based on specific choices
+            // You can adjust the scoring logic based on your specific choices
             const choiceValue = parseInt(element.value);
 
             // Ensure that the choiceValue is a number and within the expected range
@@ -332,6 +333,7 @@ sliderContainer.addEventListener("transitionend", function () {
         updateSleepScoreDisplay();
     }
 });
+
 
 
 // Post function

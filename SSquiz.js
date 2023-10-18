@@ -287,25 +287,29 @@ for (let i = 0; i < slides.length; i++) {
 
 }
 
-// Function to calculate the sleep score based on user choices
+// Function to calculate the sleep score based on user choices from slides 4 to 11
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
     let sleepScore = 0;
 
-    scoreElements.forEach(element => {
-        // You can adjust the scoring logic based on your specific choices
-        const choiceValue = parseInt(element.value);
+    // Adjust the index range to slides 4 to 11 (inclusive)
+    if (getCurrentSlideIndex() >= 4 && getCurrentSlideIndex() <= 11) {
+        scoreElements.forEach(element => {
+            // You can adjust the scoring logic based on your specific choices
+            const choiceValue = parseInt(element.value);
 
-        // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
-            sleepScore += choiceValue;
-        }
-    });
+            // Ensure that the choiceValue is a number and within the expected range
+            if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
+                sleepScore += choiceValue;
+            }
+        });
 
-    console.log("Sleep score calculated: ", sleepScore);
+        console.log("Sleep score calculated: ", sleepScore);
+    }
 
     return sleepScore;
 }
+
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {

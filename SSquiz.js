@@ -291,24 +291,31 @@ for (let i = 0; i < slides.length; i++) {
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
     let sleepScore = 0;
+    const currentSlideIndex = getCurrentSlideIndex();
+    console.log("Current slide index for sleep score calculation: ", currentSlideIndex);
 
-    scoreElements.forEach(element => {
-        // You can adjust the scoring logic based on your specific choices
-        const choiceValue = parseInt(element.value);
+    // Adjust the index range to slides 5 to 11 (inclusive)
+    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+        scoreElements.forEach(element => {
+            // You can adjust the scoring logic based on your specific choices
+            const choiceValue = parseInt(element.value);
 
-        // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
-            sleepScore += choiceValue;
-        }
-    });
+            // Ensure that the choiceValue is a number and within the expected range
+            if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
+                sleepScore += choiceValue;
+            }
+        });
 
-    console.log("Sleep score calculated: ", sleepScore);
+        console.log("Sleep score calculated: ", sleepScore);
+    }
+
     return sleepScore;
 }
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
+    console.log("Current slide index for updating sleep score display: ", currentSlideIndex);
     const sleepScore = currentSlideIndex >= 5 && currentSlideIndex <= 11 ? calculateSleepScore() : 0;
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
@@ -322,12 +329,14 @@ function updateSleepScoreDisplay() {
 sliderContainer.addEventListener("transitionend", function () {
     console.log("Slide transition detected");
     const currentSlideIndex = getCurrentSlideIndex();
+    console.log("Current slide index on transition: ", currentSlideIndex);
     
     // Check if the current slide is within the range of slides for calculating the sleep score
     if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
         updateSleepScoreDisplay();
     }
 });
+
 
 
 

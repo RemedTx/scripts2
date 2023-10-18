@@ -333,6 +333,10 @@ sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index on transition: ", currentSlideIndex);
 
+    // Check if the current slide is within the range of slides for calculating the sleep score
+    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+        updateSleepScoreDisplay();
+    }
     
 });
 

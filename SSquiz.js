@@ -273,6 +273,20 @@ sliderContainer.addEventListener("transitionend", hideArrowOnFirstSlide);
 // Initialize the arrow visibility based on the initial slide
 hideArrowOnFirstSlide();
 
+// Add attributes to checkbox and radioinputs
+for (let i = 0; i < slides.length; i++) {
+    const slide = slides[i];
+
+    // RADIOS
+    const radioInputs = slide.querySelectorAll('input[type="radio"]');
+    radioInputs.forEach((input, index) => {
+        input.setAttribute("data-name", `${i}`);
+        input.setAttribute("name", `${i}`);
+        input.setAttribute("value", index ); // Setting numerical values
+    });
+
+}
+
 // Function to calculate the sleep score based on user choices
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
@@ -283,26 +297,32 @@ function calculateSleepScore() {
         const choiceValue = parseInt(element.value);
 
         // Ensure that the choiceValue is a number and within the expected range
-        if (!isNaN(choiceValue) && choiceValue >= 1 && choiceValue <= 5) {
+        if (!isNaN(choiceValue) && choiceValue >= 0 && choiceValue <= 4) {
             sleepScore += choiceValue;
         }
     });
+
+    console.log("Sleep score calculated: ", sleepScore);
 
     return sleepScore;
 }
 
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
+    const currentSlideIndex = getCurrentSlideIndex();
     const sleepScore = calculateSleepScore();
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
-    if (sleepScoreDisplay) {
-        sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+        if (sleepScoreDisplay) {
+            sleepScoreDisplay.textContent = `Your Sleep Score: ${sleepScore}`;
+            console.log("Sleep score display updated with: ", sleepScore);
+        }
     }
-}
+
 
 // Add an event listener to calculate and update the sleep score when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
+    console.log("Slide transition detected");
     const currentSlideIndex = getCurrentSlideIndex();
     
     // Check if the current slide is within the range of slides for calculating the sleep score
@@ -311,8 +331,7 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
-// Initialize the sleep score display based on the initial slide
-updateSleepScoreDisplay();
+
 
 // Post function
 async function postRequest(url, data) {
@@ -384,4 +403,3 @@ $('#final-button').on('click', function() {
         goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })
-

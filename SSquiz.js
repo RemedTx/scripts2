@@ -345,6 +345,7 @@ sliderContainer.addEventListener("transitionend", function () {
 
 
 
+
 // Post function
 async function postRequest(url, data) {
     try {

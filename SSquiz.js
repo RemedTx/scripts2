@@ -287,15 +287,15 @@ for (let i = 0; i < slides.length; i++) {
 
 }
 
-// Function to calculate the sleep score based on user choices from slides 4 to 11
+// Function to calculate the sleep score based on user choices from slides 5 to 11
 function calculateSleepScore() {
     const scoreElements = document.querySelectorAll('input[type="radio"]:checked');
     let sleepScore = 0;
 
-    // Adjust the index range to slides 4 to 11 (inclusive)
+    // Adjust the index range to slides 5 to 11 (inclusive)
     if (getCurrentSlideIndex() >= 5 && getCurrentSlideIndex() <= 11) {
         scoreElements.forEach(element => {
-            // You can adjust the scoring logic based on your specific choices
+            // Adjust the scoring logic based on specific choices
             const choiceValue = parseInt(element.value);
 
             // Ensure that the choiceValue is a number and within the expected range
@@ -310,19 +310,17 @@ function calculateSleepScore() {
     return sleepScore;
 }
 
-
 // Function to update the sleep score display on slide 12
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
     const sleepScore = calculateSleepScore();
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
-        if (sleepScoreDisplay) {
-            sleepScoreDisplay.textContent = `${sleepScore}`;
-            console.log("Sleep score display updated with: ", sleepScore);
-        }
+    if (sleepScoreDisplay && currentSlideIndex === 12) {
+        sleepScoreDisplay.textContent = `${sleepScore}`;
+        console.log("Sleep score display updated with: ", sleepScore);
     }
-
+}
 
 // Add an event listener to calculate and update the sleep score when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
@@ -334,7 +332,6 @@ sliderContainer.addEventListener("transitionend", function () {
         updateSleepScoreDisplay();
     }
 });
-
 
 
 // Post function

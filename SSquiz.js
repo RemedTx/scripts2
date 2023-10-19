@@ -354,6 +354,25 @@ function updateSleepLevelDisplay(sleepScore) {
     sleepLevelDisplay.textContent = message;
     console.log("Sleep level display updated with: ", message);
 }
+//function to give additional info on the sleep score
+function updateSleepInfoDisplay(sleepScore) {
+    console.log("Updating sleep info display with sleep score: ", sleepScore);
+    const sleepInfoDisplay = document.getElementById("sleep-info-display");
+    let message2 = "";
+
+    if (sleepScore >= 0 && sleepScore <= 7) {
+        message2 = "xxx";
+    } else if (sleepScore >= 8 && sleepScore <= 14) {
+        message2 = "yyy";
+    } else if (sleepScore >= 15 && sleepScore <= 21) {
+        message2 = "zzz";
+    } else if (sleepScore >= 22 && sleepScore <= 28) {
+        message2 = "aaa";
+    }
+
+    sleepInfoDisplay.textContent = message2;
+    console.log("Sleep info display updated with: ", message2);
+}
 
 // Add an event listener to calculate and update the sleep score when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
@@ -365,6 +384,7 @@ sliderContainer.addEventListener("transitionend", function () {
     if (currentSlideIndex >= 4 && currentSlideIndex <= 12) {
         const sleepScore = updateSleepScoreDisplay();
         updateSleepLevelDisplay(sleepScore);
+        updateSleepInfoDisplay(sleepScore);
     }
 });
 

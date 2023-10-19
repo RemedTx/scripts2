@@ -357,8 +357,8 @@ sliderContainer.addEventListener("transitionend", function () {
 
     // Check if the current slide is within the range of slides for calculating the sleep score
     if (currentSlideIndex >= 4 && currentSlideIndex <= 12) {
-        updateSleepScoreDisplay();
-        updateSleepLevelDisplay();
+        const sleepScore = updateSleepScoreDisplay();
+        updateSleepLevelDisplay(sleepScore);
     }
 
     

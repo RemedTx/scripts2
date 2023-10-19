@@ -396,9 +396,11 @@ function displayDataInFallAsleepDisplay() {
     fallAsleepDisplay.textContent = data;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Your code here
-    if (getCurrentSlideIndex() === 20) {
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex2 = getCurrentSlideIndex();
+    console.log("Fall Asleep1 is called");
+    
+    if (currentSlideIndex2 === 20) {
         console.log("Fall Asleep is called");
         displayDataInFallAsleepDisplay();
     }

@@ -361,13 +361,13 @@ function updateSleepInfoDisplay(sleepScore) {
     let message2 = "";
 
     if (sleepScore >= 0 && sleepScore <= 7) {
-        message2 = "xxx";
+        message2 = "No clinically significant insomnia implies no noteworthy disruptions in sleep patterns. This state indicates healthy sleep habits with no apparent impacts on daytime activities or overall well-being.";
     } else if (sleepScore >= 8 && sleepScore <= 14) {
-        message2 = "yyy";
+        message2 = "Subthreshold insomnia is marked by occasional disruptions in sleep patterns, often leading to sporadic fatigue and mild impacts on daily activities. Although not as severe as clinical insomnia, it can still affect both nighttime sleep and daytime functionality to some extent.";
     } else if (sleepScore >= 15 && sleepScore <= 21) {
-        message2 = "zzz";
+        message2 = "Clinical insomnia is characterized by ongoing difficulties with sleep quality, leading to persistent fatigue, mood swings, and challenges in daily functioning. This condition can significantly impact both nighttime sleep and daytime well-being.";
     } else if (sleepScore >= 22 && sleepScore <= 28) {
-        message2 = "aaa";
+        message2 = "Severe clinical insomnia involves relentless struggles with sleep quality, causing persistent fatigue, mood swings, and difficulties in daily functioning. This condition affects both nighttime sleep and daytime well-being.";
     }
 
     sleepInfoDisplay.textContent = message2;

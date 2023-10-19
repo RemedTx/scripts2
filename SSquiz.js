@@ -397,11 +397,9 @@ function displayDataInFallAsleepDisplay() {
 }
 
 sliderContainer.addEventListener("transitionend", function () {
-    const currentSlideIndex2 = getCurrentSlideIndex();
-    console.log("Fall Asleep1 is called");
+    const currentSlideIndex2 = getCurrentSlideIndex();   
     
     if (currentSlideIndex2 === 20) {
-        console.log("Fall Asleep is called");
         displayDataInFallAsleepDisplay();
     }
 });

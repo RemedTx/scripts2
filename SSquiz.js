@@ -337,6 +337,7 @@ function updateSleepScoreDisplay() {
 
 //function to give info on the sleep score
 function updateSleepLevelDisplay(sleepScore) {
+    console.log("Updating sleep level display with sleep score: ", sleepScore);
     const sleepLevelDisplay = document.getElementById("sleep-level-display");
     let message = "";
 

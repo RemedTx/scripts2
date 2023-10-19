@@ -396,11 +396,14 @@ function displayDataInFallAsleepDisplay() {
     fallAsleepDisplay.textContent = data;
 }
 
-// Call the function on slide 20
-if (getCurrentSlideIndex() === 20) {
-    console.log("Fall Asleep is called");
-    displayDataInFallAsleepDisplay();
-}
+document.addEventListener("DOMContentLoaded", function() {
+    // Your code here
+    if (getCurrentSlideIndex() === 20) {
+        console.log("Fall Asleep is called");
+        displayDataInFallAsleepDisplay();
+    }
+});
+
 
 
 

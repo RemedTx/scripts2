@@ -331,6 +331,23 @@ function updateSleepScoreDisplay() {
         console.log("Sleep score display updated with: ", sleepScore);
     }
 }
+//function to give info on the sleep score
+function updateSleepLevelDisplay(sleepScore) {
+    const sleepLevelDisplay = document.getElementById("sleep-level-display");
+    let message = "";
+
+    if (sleepScore >= 0 && sleepScore <= 7) {
+        message = "No clinically significant insomnia";
+    } else if (sleepScore >= 8 && sleepScore <= 14) {
+        message = "Subthreshold insomnia";
+    } else if (sleepScore >= 15 && sleepScore <= 21) {
+        message = "Clinical insomnia";
+    } else if (sleepScore >= 22 && sleepScore <= 28) {
+        message = "Severe clinical insomnia";
+    }
+
+    sleepLevelDisplay.textContent = message;
+}
 
 // Add an event listener to calculate and update the sleep score when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
@@ -341,10 +358,12 @@ sliderContainer.addEventListener("transitionend", function () {
     // Check if the current slide is within the range of slides for calculating the sleep score
     if (currentSlideIndex >= 4 && currentSlideIndex <= 12) {
         updateSleepScoreDisplay();
+        updateSleepLevelDisplay();
     }
 
     
 });
+
 
 
 

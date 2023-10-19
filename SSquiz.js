@@ -323,14 +323,18 @@ function calculateSleepScore() {
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index for updating sleep score display: ", currentSlideIndex);
-    const sleepScore = currentSlideIndex >= 4 && currentSlideIndex <= 12 ? calculateSleepScore() : 0;
-    const sleepScoreDisplay = document.getElementById("sleep-score-display");
-
-    if (currentSlideIndex === 12) {
-        sleepScoreDisplay.textContent = `${sleepScore}`;
-        console.log("Sleep score display updated with: ", sleepScore);
+    let sleepScore = 0;
+    if (currentSlideIndex >= 4 && currentSlideIndex <= 12) {
+        sleepScore = calculateSleepScore();
+        const sleepScoreDisplay = document.getElementById("sleep-score-display");
+        if (currentSlideIndex === 12) {
+            sleepScoreDisplay.textContent = `${sleepScore}`;
+            console.log("Sleep score display updated with: ", sleepScore);
+        }
     }
+    return sleepScore;
 }
+
 //function to give info on the sleep score
 function updateSleepLevelDisplay(sleepScore) {
     const sleepLevelDisplay = document.getElementById("sleep-level-display");
@@ -360,12 +364,7 @@ sliderContainer.addEventListener("transitionend", function () {
         const sleepScore = updateSleepScoreDisplay();
         updateSleepLevelDisplay(sleepScore);
     }
-
-    
 });
-
-
-
 
 
 

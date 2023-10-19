@@ -352,6 +352,7 @@ function updateSleepLevelDisplay(sleepScore) {
     }
 
     sleepLevelDisplay.textContent = message;
+    console.log("Sleep level display updated with: ", message);
 }
 
 // Add an event listener to calculate and update the sleep score when the slide changes

@@ -294,10 +294,10 @@ function calculateSleepScore() {
     console.log("Current slide index for sleep score calculation: ", currentSlideIndex);
 
     // Only calculate sleep score if the current slide index is between 5 and 11 (inclusive)
-    if (currentSlideIndex >= 5 && currentSlideIndex <= 11) {
+    if (currentSlideIndex >= 4 && currentSlideIndex <= 12) {
         const scoreElements = Array.from(document.querySelectorAll('input[type="radio"]:checked')).filter(element => {
             const elementSlideIndex = parseInt(element.getAttribute("data-name"));
-            return elementSlideIndex >= 5 && elementSlideIndex <= 11;
+            return elementSlideIndex >= 4 && elementSlideIndex <= 12;
         });
 
         scoreElements.forEach(element => {
@@ -323,7 +323,7 @@ function calculateSleepScore() {
 function updateSleepScoreDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
     console.log("Current slide index for updating sleep score display: ", currentSlideIndex);
-    const sleepScore = currentSlideIndex >= 5 && currentSlideIndex <= 11 ? calculateSleepScore() : 0;
+    const sleepScore = currentSlideIndex >= 4 && currentSlideIndex <= 12 ? calculateSleepScore() : 0;
     const sleepScoreDisplay = document.getElementById("sleep-score-display");
 
     if (sleepScoreDisplay && currentSlideIndex === 12) {

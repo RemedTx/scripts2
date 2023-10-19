@@ -388,6 +388,18 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+// Function to display data in the fall-asleep-display div on slide 20
+function displayDataInFallAsleepDisplay() {
+    const data = document.getElementById('field-2').value;
+    const fallAsleepDisplay = document.getElementById('fall-asleep-display');
+    fallAsleepDisplay.textContent = data;
+}
+
+// Call the function on slide 20
+if (getCurrentSlideIndex() === 20) {
+    displayDataInFallAsleepDisplay();
+}
+
 
 
 // Post function

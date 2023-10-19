@@ -392,6 +392,7 @@ sliderContainer.addEventListener("transitionend", function () {
 function displayDataInFallAsleepDisplay() {
     const data = document.getElementById('field-2').value;
     const fallAsleepDisplay = document.getElementById('fall-asleep-display');
+    console.log("Fall Asleep in", data);
     fallAsleepDisplay.textContent = data;
 }
 

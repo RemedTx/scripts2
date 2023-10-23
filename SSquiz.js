@@ -486,19 +486,33 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
-// Function to display data in the time-asleep div on slide 23
 function displayDataInTimeAsleepDisplay() {
-    const data2 = document.getElementById('field-2').value;
-    const timeAsleepDisplay = document.getElementById('time-asleep-display');
-    console.log("Total time asleep", data2);
-    timeAsleepDisplay.textContent = data2;
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 23) {
+        const slide22 = document.querySelector('.w-slide:nth-child(22)');
+        if (slide22) {
+            const data22Input = slide22.querySelector('input[data-purpose="time-asleep-input"]');
+            if (data22Input) {
+                const data22 = data22Input.value;
+                const timeAsleepDisplay = document.getElementById('time-asleep-display');
+                console.log("Total time asleep", data22);
+                timeAsleepDisplay.textContent = data22;
+            } else {
+                console.error("No data input found on slide 22");
+            }
+        } else {
+            console.error("Slide 22 not found");
+        }
+    }
 }
+
 
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();   
     
     if (currentSlideIndex === 23) {
         displayDataInTimeAsleepDisplay();
+        retrieveAndShowData();
     }
 });
 

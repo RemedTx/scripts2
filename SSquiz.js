@@ -406,33 +406,53 @@ sliderContainer.addEventListener("transitionend", function () {
 
 function displayDifferentNumber(text1, text2) {
     let numberToDisplay;
+    console.log("Selected Gender:", text1);
+    console.log("Selected Age:", text2);
     if (text1 === 'Male') {
-        if (text2 ==='20s'){
+        if (text2 === '20s') {
             numberToDisplay = 1;
-        }else if (text2 ==='30s'){
+        } else if (text2 === '30s') {
             numberToDisplay = 2;
-        }else if (text2 ==='40s'){
+        } else if (text2 === '40s') {
             numberToDisplay = 3;
-        }else if (text2 ==='50s'){
+        } else if (text2 === '50s') {
             numberToDisplay = 4;
-        }else if (text2 ==='60s'){
+        } else if (text2 === '60s') {
             numberToDisplay = 5;
-        }else if (text2 ==='70+'){
+        } else if (text2 === '70+') {
             numberToDisplay = 6;
         }
-                        
-        
-    } else if (selectedGender === 'female' && selectedAge === '18-30') {
-        numberToDisplay = 40;
-    } else if (selectedGender === 'male' && selectedAge === '31-50') {
-        numberToDisplay = 60;
-    } else if (selectedGender === 'female' && selectedAge === '31-50') {
-        numberToDisplay = 55;
+    } else if (text1 === 'Female') {
+        if (text2 === '20s') {
+            numberToDisplay = 40;
+        } else if (text2 === '30s') {
+            numberToDisplay = 45;
+        } else if (text2 === '40s') {
+            numberToDisplay = 50;
+        } else if (text2 === '50s') {
+            numberToDisplay = 55;
+        } else if (text2 === '60s') {
+            numberToDisplay = 60;
+        } else if (text2 === '70+') {
+            numberToDisplay = 65;
+        }
     } else {
-        numberToDisplay = 45;
+        if (text2 === '20s') {
+            numberToDisplay = 10;
+        } else if (text2 === '30s') {
+            numberToDisplay = 15;
+        } else if (text2 === '40s') {
+            numberToDisplay = 20;
+        } else if (text2 === '50s') {
+            numberToDisplay = 25;
+        } else if (text2 === '60s') {
+            numberToDisplay = 30;
+        } else if (text2 === '70+') {
+            numberToDisplay = 35;
+        }
     }
+    console.log("Number to display:", numberToDisplay);
     return numberToDisplay;
-    console.log (numberToDisplay);
 }
 
 function retrieveAndShowData() {

@@ -469,7 +469,7 @@ function retrieveAndShowData() {
     if (selectedGender && selectedAge && sexAgeDiv) {
         console.log("Selected Gender:", text1);
         console.log("Selected Age:", text2);
-        if (text1="Other") {
+        if (text1 === "Other") {
             sexAgeDiv.textContent = `The average User in their ${text2} takes`;
             displayDifferentNumber(text1, text2);
         }else {

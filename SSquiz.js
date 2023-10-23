@@ -393,7 +393,7 @@ function displayDataInFallAsleepDisplay() {
     const data = document.getElementById('field-2').value;
     const fallAsleepDisplay = document.getElementById('fall-asleep-display');
     console.log("Fall Asleep in", data);
-    fallAsleepDisplay.textContent = data;
+    fallAsleepDisplay.textContent = "⏱ " + data + " min";
 }
 
 sliderContainer.addEventListener("transitionend", function () {
@@ -410,48 +410,47 @@ function displayDifferentNumber(text1, text2) {
     console.log("Selected Age:", text2);
     if (text1 === 'Male') {
         if (text2 === '20s') {
-            numberToDisplay = '⏱1';
+            numberToDisplay = '⏱ 17.1 min';
         } else if (text2 === '30s') {
-            numberToDisplay = '⏱2';
+            numberToDisplay = '⏱ 17.3 min';
         } else if (text2 === '40s') {
-            numberToDisplay = 3;
+            numberToDisplay = '⏱ 12.1 min';
         } else if (text2 === '50s') {
-            numberToDisplay = 4;
+            numberToDisplay = '⏱ 11.5 min';
         } else if (text2 === '60s') {
-            numberToDisplay = 5;
+            numberToDisplay = '⏱ 12.1 min';
         } else if (text2 === '70+') {
-            numberToDisplay = 6;
+            numberToDisplay = '⏱ 12.3 min';
         }
     } else if (text1 === 'Female') {
         if (text2 === '20s') {
-            numberToDisplay = 40;
+            numberToDisplay = '⏱ 14.7 min';
         } else if (text2 === '30s') {
-            numberToDisplay = 45;
+            numberToDisplay = '⏱ 13.7 min';
         } else if (text2 === '40s') {
-            numberToDisplay = 50;
+            numberToDisplay = '⏱ 12.2 min';
         } else if (text2 === '50s') {
-            numberToDisplay = 55;
+            numberToDisplay = '⏱ 12.7 min';
         } else if (text2 === '60s') {
-            numberToDisplay = 60;
+            numberToDisplay = '⏱ 13.6 min';
         } else if (text2 === '70+') {
-            numberToDisplay = 65;
+            numberToDisplay = '⏱ 17.8 min';
         }
     } else {
         if (text2 === '20s') {
-            numberToDisplay = 10;
+            numberToDisplay = '⏱ 15.9 min';
         } else if (text2 === '30s') {
-            numberToDisplay = 15;
+            numberToDisplay = '⏱ 15.5 min';
         } else if (text2 === '40s') {
-            numberToDisplay = 20;
+            numberToDisplay = '⏱ 12.2 min';
         } else if (text2 === '50s') {
-            numberToDisplay = 25;
+            numberToDisplay = '⏱ 12.1 min';
         } else if (text2 === '60s') {
-            numberToDisplay = 30;
+            numberToDisplay = '⏱ 12.85 min';
         } else if (text2 === '70+') {
-            numberToDisplay = 35;
+            numberToDisplay = '⏱ 15.05 min';
         }
     }
-    console.log("Number to display:", numberToDisplay);
     
     // Display the numberToDisplay in the 'average-time' div
     const averageTimeDiv = document.getElementById('average-time');
@@ -470,8 +469,13 @@ function retrieveAndShowData() {
     if (selectedGender && selectedAge && sexAgeDiv) {
         console.log("Selected Gender:", text1);
         console.log("Selected Age:", text2);
-        sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-        displayDifferentNumber(text1, text2);
+        if (text1="Other") {
+            sexAgeDiv.textContent = `The average User in their ${text2} takes`;
+            displayDifferentNumber(text1, text2);
+        }else {
+            sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
+            displayDifferentNumber(text1, text2);
+    }
     } else {
         console.log("Data retrieval failed or element not found.");
     }

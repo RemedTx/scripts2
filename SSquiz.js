@@ -420,8 +420,8 @@ function retrieveAndShowData() {
 // Add an event listener to the slider container to detect when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 22) {
-        console.log("Reached Slide 22");
+    if (currentSlideIndex === 20) {
+        console.log("Reached Slide 20");
         retrieveAndShowData();
     }
 });

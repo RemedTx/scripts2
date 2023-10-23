@@ -410,9 +410,9 @@ function displayDifferentNumber(text1, text2) {
     console.log("Selected Age:", text2);
     if (text1 === 'Male') {
         if (text2 === '20s') {
-            numberToDisplay = 1;
+            numberToDisplay = '⏱1';
         } else if (text2 === '30s') {
-            numberToDisplay = 2;
+            numberToDisplay = '⏱2';
         } else if (text2 === '40s') {
             numberToDisplay = 3;
         } else if (text2 === '50s') {
@@ -486,6 +486,21 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+// Function to display data in the time-asleep div on slide 23
+function displayDataInTimeAsleepDisplay() {
+    const data = document.getElementById('field-2').value;
+    const timeAsleepDisplay = document.getElementById('time-asleep-display');
+    console.log("Total time asleep", data);
+    timeAsleepDisplay.textContent = data;
+}
+
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();   
+    
+    if (currentSlideIndex === 23) {
+        displayDataInTimeAsleepDisplay();
+    }
+});
 
 
 // Post function

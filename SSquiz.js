@@ -404,12 +404,44 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+function displayDifferentNumber(text1, text2) {
+    let numberToDisplay;
+    if (text1 === 'Male') {
+        if (text2 ==='20s'){
+            numberToDisplay = 1;
+        }else if (text2 ==='30s'){
+            numberToDisplay = 2;
+        }else if (text2 ==='40s'){
+            numberToDisplay = 3;
+        }else if (text2 ==='50s'){
+            numberToDisplay = 4;
+        }else if (text2 ==='60s'){
+            numberToDisplay = 5;
+        }else if (text2 ==='70+'){
+            numberToDisplay = 6;
+        }
+                        
+        
+    } else if (selectedGender === 'female' && selectedAge === '18-30') {
+        numberToDisplay = 40;
+    } else if (selectedGender === 'male' && selectedAge === '31-50') {
+        numberToDisplay = 60;
+    } else if (selectedGender === 'female' && selectedAge === '31-50') {
+        numberToDisplay = 55;
+    } else {
+        numberToDisplay = 45;
+    }
+    return numberToDisplay;
+    console.log (numberToDisplay);
+}
+
 function retrieveAndShowData() {
     const selectedGender = document.querySelector('input[name="16"]:checked');
     const text1 = selectedGender.nextElementSibling.textContent.trim();
     const selectedAge = document.querySelector('input[name="17"]:checked');
     const text2 = selectedAge.nextElementSibling.textContent.trim();
     const sexAgeDiv = document.getElementById('sex-age');
+    
     if (selectedGender && selectedAge && sexAgeDiv) {
         console.log("Selected Gender:", text1);
         console.log("Selected Age:", text2);

@@ -409,17 +409,23 @@ function retrieveAndShowData() {
     const selectedAge = document.querySelector('input[name="18"]:checked')?.value;
     const sexAgeDiv = document.getElementById('sex-age');
     if (selectedGender && selectedAge && sexAgeDiv) {
+        console.log("Selected Gender:", selectedGender);
+        console.log("Selected Age:", selectedAge);
         sexAgeDiv.textContent = `Selected Gender: ${selectedGender}, Selected Age: ${selectedAge}`;
+    } else {
+        console.log("Data retrieval failed or element not found.");
     }
 }
 
 // Add an event listener to the slider container to detect when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 20) {
+    if (currentSlideIndex === 22) {
+        console.log("Reached Slide 22");
         retrieveAndShowData();
     }
 });
+
 
 
 

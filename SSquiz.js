@@ -488,10 +488,10 @@ sliderContainer.addEventListener("transitionend", function () {
 
 // Function to display data in the time-asleep div on slide 23
 function displayDataInTimeAsleepDisplay() {
-    const data = document.getElementById('field-2').value;
+    const data2 = document.getElementById('field-2').value;
     const timeAsleepDisplay = document.getElementById('time-asleep-display');
-    console.log("Total time asleep", data);
-    timeAsleepDisplay.textContent = data;
+    console.log("Total time asleep", data2);
+    timeAsleepDisplay.textContent = data2;
 }
 
 sliderContainer.addEventListener("transitionend", function () {

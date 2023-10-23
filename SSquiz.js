@@ -404,6 +404,22 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+function retrieveAndShowData() {
+    const selectedGender = document.querySelector('input[name="17"]:checked')?.value;
+    const selectedAge = document.querySelector('input[name="18"]:checked')?.value;
+    const sexAgeDiv = document.getElementById('sex-age');
+    if (selectedGender && selectedAge && sexAgeDiv) {
+        sexAgeDiv.textContent = `Selected Gender: ${selectedGender}, Selected Age: ${selectedAge}`;
+    }
+}
+
+// Add an event listener to the slider container to detect when the slide changes
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 20) {
+        retrieveAndShowData();
+    }
+});
 
 
 

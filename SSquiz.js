@@ -405,13 +405,15 @@ sliderContainer.addEventListener("transitionend", function () {
 });
 
 function retrieveAndShowData() {
-    const selectedGender = document.querySelector('input[name="17"]:checked')?.value;
-    const selectedAge = document.querySelector('input[name="18"]:checked')?.value;
+    const selectedGender = document.querySelector('input[name="16"]:checked');
+    const text1 = selectedGender.nextElementSibling.textContent.trim();
+    const selectedAge = document.querySelector('input[name="17"]:checked');
+    const text2 = selectedGender.nextElementSibling.textContent.trim();
     const sexAgeDiv = document.getElementById('sex-age');
     if (selectedGender && selectedAge && sexAgeDiv) {
-        console.log("Selected Gender:", selectedGender);
-        console.log("Selected Age:", selectedAge);
-        sexAgeDiv.textContent = `Selected Gender: ${selectedGender}, Selected Age: ${selectedAge}`;
+        console.log("Selected Gender:", text1);
+        console.log("Selected Age:", text2);
+        sexAgeDiv.textContent = `Selected Gender: ${text1}, Selected Age: ${text2}`;
     } else {
         console.log("Data retrieval failed or element not found.");
     }

@@ -429,7 +429,7 @@ sliderContainer.addEventListener("transitionend", function () {
 sliderContainer.addEventListener("transitionend", function () {
 const selectedRadio17 = document.querySelector('input[name="17"]:checked');
 if (selectedRadio17) {
-  console.log("Radio 17 is checked:", selectedRadio17.name);
+  console.log("Radio 17 is checked:", selectedRadio17.label);
   // Code to be executed if the radio button with name 17 is checked
 } else {
   console.log("Radio 17 is not checked");

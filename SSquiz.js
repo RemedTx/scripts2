@@ -408,12 +408,12 @@ function retrieveAndShowData() {
     const selectedGender = document.querySelector('input[name="16"]:checked');
     const text1 = selectedGender.nextElementSibling.textContent.trim();
     const selectedAge = document.querySelector('input[name="17"]:checked');
-    const text2 = selectedGender.nextElementSibling.textContent.trim();
+    const text2 = selectedAge.nextElementSibling.textContent.trim();
     const sexAgeDiv = document.getElementById('sex-age');
     if (selectedGender && selectedAge && sexAgeDiv) {
         console.log("Selected Gender:", text1);
         console.log("Selected Age:", text2);
-        sexAgeDiv.textContent = `Selected Gender: ${text1}, Selected Age: ${text2}`;
+        sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
     } else {
         console.log("Data retrieval failed or element not found.");
     }
@@ -426,18 +426,6 @@ sliderContainer.addEventListener("transitionend", function () {
         console.log("Reached Slide 20");
         retrieveAndShowData();
     }
-});
-
-sliderContainer.addEventListener("transitionend", function () {
-const selectedRadio17 = document.querySelector('input[name="17"]:checked');
-if (selectedRadio17) {
-  const text = selectedRadio17.nextElementSibling.textContent.trim();
-  console.log("Radio 17 is checked:", text);
-  // Code to be executed if the radio button with name 17 is checked
-} else {
-  console.log("Radio 17 is not checked");
-  // Code to be executed if the radio button with name 17 is not checked
-}
 });
 
 

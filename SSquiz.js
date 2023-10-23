@@ -466,6 +466,7 @@ function retrieveAndShowData() {
         console.log("Selected Gender:", text1);
         console.log("Selected Age:", text2);
         sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
+        displayDifferentNumber(text1, text2);
     } else {
         console.log("Data retrieval failed or element not found.");
     }

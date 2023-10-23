@@ -452,7 +452,12 @@ function displayDifferentNumber(text1, text2) {
         }
     }
     console.log("Number to display:", numberToDisplay);
-    return numberToDisplay;
+    
+    // Display the numberToDisplay in the 'average-time' div
+    const averageTimeDiv = document.getElementById('average-time');
+    if (averageTimeDiv) {
+        averageTimeDiv.textContent = numberToDisplay;
+    }
 }
 
 function retrieveAndShowData() {

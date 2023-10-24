@@ -696,7 +696,7 @@ $('#final-button').on('click', function() {
     player.load(lottieSrc);
     setTimeout(() => {
         loaderContainer.style.display = 'none';
-        leftArrow.style.display = 'block'; // Show the previous arrow
+        leftArrow.style.display = 'none'; // Show the previous arrow
         goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })

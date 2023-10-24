@@ -662,7 +662,7 @@ function validateEmailForm() {
     if (emailInputs.length > 0 && !emailInputs.some((el) => $(el).val().indexOf('@') !== -1 && $(el).val().indexOf('.') !== -1)) {
         error = "Please enter a valid email";
     }
-    // If not error -> submit form
+    // If no error -> submit form
     if (!error) {
         sendSlack(true, emailInputs[0].value);
         try {
@@ -671,25 +671,18 @@ function validateEmailForm() {
             console.log(err);
         }
         error = "";
-        goToNextSlide(this);
 
-        // Retrieve the email address and add it as a hidden field
+        // Add email to the URL
         const userEmail = emailInputs[0].value;
-        const hiddenEmailField = document.createElement("input");
-        hiddenEmailField.setAttribute("type", "hidden");
-        hiddenEmailField.setAttribute("name", "user_email");
-        hiddenEmailField.setAttribute("value", userEmail);
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.append('user_email', userEmail);
+        const newUrl = window.location.pathname + "?" + urlParams.toString();
+        history.pushState(null, '', newUrl);
 
-        // Append the hidden field to the form
-        const formElement = document.querySelector("form");
-        if (formElement) {
-            formElement.appendChild(hiddenEmailField);
-        }
-        
-    }    
-     else {
-     alert(error);
-     }
+        goToNextSlide(this);
+    } else {
+        alert(error);
+    }
 }
 const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2tpZmJA6.json"
 

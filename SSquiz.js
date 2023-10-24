@@ -558,13 +558,13 @@ function retrieveAndShowData2() {
             if (selectedGender && selectedAge) {
 
                 if (text1 === "Other") {                  
-                    sexAgeDiv.textContent = `The average person in their ${text2} takes`;               
+                    sexAgeDiv.textContent = `The average person in their ${text2} sleeps`;               
                     displayDifferentNumber2(text1, text2);
                 } else if (text1 === "Male"){
-                    sexAgeDiv.textContent = `The average man in their ${text2} takes`;
+                    sexAgeDiv.textContent = `The average man in their ${text2} sleeps`;
                     displayDifferentNumber2(text1, text2);
                 } else if (text1 === "Female"){
-                    sexAgeDiv.textContent = `The average woman in their ${text2} takes`;         
+                    sexAgeDiv.textContent = `The average woman in their ${text2} sleeps`;         
                     displayDifferentNumber2(text1, text2);
                 }
             } else {

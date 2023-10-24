@@ -606,7 +606,7 @@ function displayDataInTimeAsleepDisplay() {
                 const data22 = data22Input.value;
                 const timeAsleepDisplay = document.getElementById('time-asleep-display');
                 console.log("Total Time Asleep: ", data22);
-                timeAsleepDisplay.textContent = "⏱ " + data22 + " h";
+                timeAsleepDisplay.textContent = "⏱ " + data22 + " hr";
             } else {
                 console.error("No data input found on slide 22");
             }

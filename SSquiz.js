@@ -476,11 +476,11 @@ function retrieveAndShowData() {
                 if (text1 === "Other") {
                     console.log ("data is", text1, text2);
                     sexAgeDiv.textContent = `The average User in their ${text2} takes`;
-                    displayDifferentNumber(text1, text2);
+                   // displayDifferentNumber(text1, text2);
                 } else {
                     console.log ("data is", text1, text2);
                     sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-                    displayDifferentNumber(text1, text2);
+                  //  displayDifferentNumber(text1, text2);
                 }
             } else {
                 console.log("Data retrieval failed or element not found.");
@@ -515,7 +515,7 @@ function displayDataInTimeAsleepDisplay() {
                 const data22 = data22Input.value;
                 const timeAsleepDisplay = document.getElementById('time-asleep-display');
                 console.log("Total Time Asleep: ", data22);
-                timeAsleepDisplay.textContent = "⏱ " + data22 + " min";
+                timeAsleepDisplay.textContent = "⏱ " + data22 + " h";
             } else {
                 console.error("No data input found on slide 22");
             }

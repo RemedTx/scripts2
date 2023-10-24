@@ -406,8 +406,7 @@ sliderContainer.addEventListener("transitionend", function () {
 
 function displayDifferentNumber(text1, text2) {
     let numberToDisplay;
-    console.log("Selected Gender:", text1);
-    console.log("Selected Age:", text2);
+    
     if (text1 === 'Male') {
         if (text2 === '20s') {
             numberToDisplay = '⏱ 17.1 min';
@@ -460,7 +459,6 @@ function displayDifferentNumber(text1, text2) {
 }
 
 function retrieveAndShowData() {
-    console.log ("Show data activated");
     const currentSlideIndex = getCurrentSlideIndex();
     const selectedGender = document.querySelector('input[name="16"]:checked');
     const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
@@ -476,9 +474,11 @@ function retrieveAndShowData() {
                 console.log("Selected Gender:", text1);
                 console.log("Selected Age:", text2);
                 if (text1 === "Other") {
+                    console.log ("data is", text1, text2);
                     sexAgeDiv.textContent = `The average User in their ${text2} takes`;
                     displayDifferentNumber(text1, text2);
                 } else {
+                    console.log ("data is", text1, text2);
                     sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
                     displayDifferentNumber(text1, text2);
                 }
@@ -515,7 +515,7 @@ function displayDataInTimeAsleepDisplay() {
                 const data22 = data22Input.value;
                 const timeAsleepDisplay = document.getElementById('time-asleep-display');
                 console.log("Total Time Asleep: ", data22);
-                timeAsleepDisplay.textContent = data22;
+                timeAsleepDisplay.textContent = "⏱ " + data22 + " min";
             } else {
                 console.error("No data input found on slide 22");
             }

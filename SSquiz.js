@@ -460,24 +460,31 @@ function displayDifferentNumber(text1, text2) {
 }
 
 function retrieveAndShowData() {
+    const currentSlideIndex = getCurrentSlideIndex();
     const selectedGender = document.querySelector('input[name="16"]:checked');
-    const text1 = selectedGender.nextElementSibling.textContent.trim();
+    const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
     const selectedAge = document.querySelector('input[name="17"]:checked');
-    const text2 = selectedAge.nextElementSibling.textContent.trim();
+    const text2 = selectedAge ? selectedAge.nextElementSibling.textContent.trim() : "";
     const sexAgeDiv = document.getElementById('sex-age');
-    
-    if (selectedGender && selectedAge && sexAgeDiv) {
-        console.log("Selected Gender:", text1);
-        console.log("Selected Age:", text2);
-        if (text1 === "Other") {
-            sexAgeDiv.textContent = `The average User in their ${text2} takes`;
-            displayDifferentNumber(text1, text2);
-        }else {
-            sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-            displayDifferentNumber(text1, text2);
-    }
+
+    if (sexAgeDiv) {
+        if (currentSlideIndex === 20 || currentSlideIndex === 23) {
+            if (selectedGender && selectedAge) {
+                console.log("Selected Gender:", text1);
+                console.log("Selected Age:", text2);
+                if (text1 === "Other") {
+                    sexAgeDiv.textContent = `The average User in their ${text2} takes`;
+                    displayDifferentNumber(text1, text2);
+                } else {
+                    sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
+                    displayDifferentNumber(text1, text2);
+                }
+            } else {
+                console.log("Data retrieval failed or element not found.");
+            }
+        }
     } else {
-        console.log("Data retrieval failed or element not found.");
+        console.log("Sex-age div not found.");
     }
 }
 
@@ -485,7 +492,15 @@ function retrieveAndShowData() {
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
     if (currentSlideIndex === 20) {
-        console.log("Reached Slide 20");
+        retrieveAndShowData();
+    }
+});
+
+// Adjust the event listener for slide 23
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 23) {
+        console.log("Reached Slide 23");
         retrieveAndShowData();
     }
 });
@@ -519,12 +534,10 @@ function displayDataInTimeAsleepDisplay() {
 
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();   
-    console.log("Transition End - Current Slide Index: ", currentSlideIndex); // Check if the transition end event is firing
 
     if (currentSlideIndex === 23) {
-        console.log("Slide 23 reached");
         displayDataInTimeAsleepDisplay();
-        retrieveAndShowData();
+        
     }
 });
 

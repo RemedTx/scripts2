@@ -686,17 +686,19 @@ $('#final-button').on('click', function() {
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
-   // Hide the previous arrow
-    console.log (leftArrow);
-    leftArrow.style.display = 'none';
-
-    
+    // Hide the previous arrow
+    const leftArrow = document.getElementById("previous-button");
+    if (leftArrow) {
+        leftArrow.style.display = 'none';
+    }
     // Play animation
     const player = document.querySelector("lottie-player");
     player.load(lottieSrc);
     setTimeout(() => {
         loaderContainer.style.display = 'none';
-        leftArrow.style.display = 'none'; // Show the previous arrow
+        if (leftArrow) {
+            leftArrow.style.display = 'none'; // Hide the previous arrow
+        }
         goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })

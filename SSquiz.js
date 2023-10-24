@@ -673,11 +673,11 @@ function validateEmailForm() {
         error = "";
 
         // Add email to the URL
-        const userEmail = emailInputs[0].value;
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.append('user_email', userEmail);
-        const newUrl = window.location.pathname + "?" + urlParams.toString();
-        history.pushState(null, '', newUrl);
+        //const userEmail = emailInputs[0].value;
+        //const urlParams = new URLSearchParams(window.location.search);
+        //urlParams.append('user_email', userEmail);
+        //const newUrl = window.location.pathname + "?" + urlParams.toString();
+        //history.pushState(null, '', newUrl);
 
         goToNextSlide(this);
         // Store the email in session storage
@@ -692,6 +692,11 @@ const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2t
 // Just before last view : progress bar animation
 $('#lottie-container').html(`<lottie-player autoplay mode="normal" speed=1 style="width: 400px"></lottie-player>`);
 $('#final-button').on('click', function() {
+    // Hide slide 32 before starting the animation
+    const slide32 = document.querySelector('.w-slide:nth-child(32)');
+    if (slide32) {
+        slide32.style.display = 'none';
+    }
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';

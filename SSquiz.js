@@ -473,14 +473,14 @@ function retrieveAndShowData() {
             if (selectedGender && selectedAge) {
                 console.log("Selected Gender:", text1);
                 console.log("Selected Age:", text2);
-                if (text1 === "Other") {
-                    console.log ("data is", text1, text2);
+                if (text1 === "Other") {                  
                     sexAgeDiv.textContent = `The average User in their ${text2} takes`;
-                   // displayDifferentNumber(text1, text2);
+                    console.log ("sex-age is", sexAgeDiv);
+                    displayDifferentNumber(text1, text2);
                 } else {
-                    console.log ("data is", text1, text2);
                     sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-                  //  displayDifferentNumber(text1, text2);
+                    console.log ("sex-age is", sexAgeDiv);
+                    displayDifferentNumber(text1, text2);
                 }
             } else {
                 console.log("Data retrieval failed or element not found.");

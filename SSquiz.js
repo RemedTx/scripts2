@@ -468,7 +468,7 @@ function retrieveAndShowData() {
 
     if (sexAgeDiv) {
         console.log ("sex-agediv found");
-        if (currentSlideIndex === 20 || currentSlideIndex === 23) {
+        if (currentSlideIndex === 20) {
             console.log ("on the right slide");
             if (selectedGender && selectedAge) {
                 console.log("Selected Gender:", text1);
@@ -491,11 +491,51 @@ function retrieveAndShowData() {
     }
 }
 
+//Same for slide 23 (same elements do not show twice)
+function retrieveAndShowData2() {
+    const currentSlideIndex = getCurrentSlideIndex();
+    const selectedGender = document.querySelector('input[name="16"]:checked');
+    const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
+    const selectedAge = document.querySelector('input[name="17"]:checked');
+    const text2 = selectedAge ? selectedAge.nextElementSibling.textContent.trim() : "";
+    const sexAgeDiv = document.getElementById('sex-age2');
+
+    if (sexAgeDiv) {
+        console.log ("sex-agediv found");
+        if (currentSlideIndex === 23) {
+            console.log ("on the right slide");
+            if (selectedGender && selectedAge) {
+                console.log("Selected Gender:", text1);
+                console.log("Selected Age:", text2);
+                if (text1 === "Other") {                  
+                    sexAgeDiv.textContent = `The average User in their ${text2} takes`;
+                    console.log ("sex-age is", sexAgeDiv);
+                    //displayDifferentNumber2(text1, text2);
+                } else {
+                    sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
+                    console.log ("sex-age is", sexAgeDiv);
+                    //displayDifferentNumber2(text1, text2);
+                }
+            } else {
+                console.log("Data retrieval failed or element not found.");
+            }
+        }
+    } else {
+        console.log("Sex-age div not found.");
+    }
+}
 // Add an event listener to the slider container to detect when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 20 || currentSlideIndex === 23) {
+    if (currentSlideIndex === 20) {
         retrieveAndShowData();
+    }
+});
+//SAME for slide 23
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 23) {
+        retrieveAndShowData2();
     }
 });
 

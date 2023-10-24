@@ -491,19 +491,12 @@ function retrieveAndShowData() {
 // Add an event listener to the slider container to detect when the slide changes
 sliderContainer.addEventListener("transitionend", function () {
     const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 20) {
+    if (currentSlideIndex === 20 || currentSlideIndex === 23) {
         retrieveAndShowData();
     }
 });
 
-// Adjust the event listener for slide 23
-sliderContainer.addEventListener("transitionend", function () {
-    const currentSlideIndex = getCurrentSlideIndex();
-    if (currentSlideIndex === 23) {
-        console.log("Reached Slide 23");
-        retrieveAndShowData();
-    }
-});
+
 
 function displayDataInTimeAsleepDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();

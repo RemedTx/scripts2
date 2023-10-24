@@ -690,6 +690,10 @@ function validateEmailForm() {
 }
 const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2tpZmJA6.json"
 
+sliderContainer.addEventListener("transitionend", function () {
+    window.scrollTo(0, 0); // Scrolls the screen to the top at each new slide
+});
+
 // Just before last view : progress bar animation
 $('#lottie-container').html(`<lottie-player autoplay mode="normal" speed=1 style="width: 400px"></lottie-player>`);
 $('#final-button').on('click', function() {

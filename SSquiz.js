@@ -680,6 +680,9 @@ function validateEmailForm() {
         history.pushState(null, '', newUrl);
 
         goToNextSlide(this);
+        // Store the email in session storage
+        sessionStorage.setItem('user_email', emailInputs[0].value);
+        
     } else {
         alert(error);
     }

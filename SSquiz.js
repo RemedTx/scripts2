@@ -255,12 +255,12 @@ sliderContainer.addEventListener("transitionend", updateTitle);
 // Initialize the title based on the initial slide
 updateTitle();
 
-// Function to hide the arrow on the first slide
+// Function to hide the arrow on the first slide &33rd
 function hideArrowOnFirstSlide() {
     const currentSlideIndex = getCurrentSlideIndex();
     const arrowElement = document.getElementById("previous-button");
     
-    if (currentSlideIndex === 1 ) { // Check if it's the first slide
+    if (currentSlideIndex === 1 || currentSlideIndex === 33) { // Check if it's the first slide
         arrowElement.style.display = "none"; // Hide the arrow
     } else {
         arrowElement.style.display = "block"; // Show the arrow for other slides
@@ -628,22 +628,7 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
-function hideArrowOnSlide33() {
-    const currentSlideIndex = getCurrentSlideIndex();
-    const arrowElement = document.getElementById("previous-button");
 
-    if (currentSlideIndex === 33) {
-        arrowElement.style.display = "none"; // Hide the arrow
-    } else {
-        arrowElement.style.display = "block"; // Show the arrow for other slides
-    }
-}
-
-// Add an event listener to check and hide the arrow when the slide changes
-sliderContainer.addEventListener("transitionend", hideArrowOnSlide33);
-
-// Initialize the arrow visibility based on the initial slide
-hideArrowOnSlide33();
 
 // Post function
 async function postRequest(url, data) {
@@ -708,11 +693,7 @@ const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2t
 // Just before last view : progress bar animation
 $('#lottie-container').html(`<lottie-player autoplay mode="normal" speed=1 style="width: 400px"></lottie-player>`);
 $('#final-button').on('click', function() {
-    // Hide slide 32 before starting the animation
-    const slide32 = document.querySelector('.w-slide:nth-child(32)');
-    if (slide32) {
-        slide32.style.display = 'none';
-    }
+   
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
@@ -725,10 +706,7 @@ $('#final-button').on('click', function() {
     const player = document.querySelector("lottie-player");
     player.load(lottieSrc);
     setTimeout(() => {
-        // Show slide 32 again after the animation is finished
-        if (slide32) {
-            slide32.style.display = 'block';
-        }
+        
         
         loaderContainer.style.display = 'none';
         if (leftArrow) {

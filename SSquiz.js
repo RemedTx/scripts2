@@ -628,6 +628,22 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+function hideArrowOnSlide33() {
+    const currentSlideIndex = getCurrentSlideIndex();
+    const arrowElement = document.getElementById("previous-button");
+
+    if (currentSlideIndex === 33) {
+        arrowElement.style.display = "none"; // Hide the arrow
+    } else {
+        arrowElement.style.display = "block"; // Show the arrow for other slides
+    }
+}
+
+// Add an event listener to check and hide the arrow when the slide changes
+sliderContainer.addEventListener("transitionend", hideArrowOnSlide33);
+
+// Initialize the arrow visibility based on the initial slide
+hideArrowOnSlide33();
 
 // Post function
 async function postRequest(url, data) {
@@ -709,6 +725,11 @@ $('#final-button').on('click', function() {
     const player = document.querySelector("lottie-player");
     player.load(lottieSrc);
     setTimeout(() => {
+        // Show slide 32 again after the animation is finished
+        if (slide32) {
+            slide32.style.display = 'block';
+        }
+        
         loaderContainer.style.display = 'none';
         if (leftArrow) {
             leftArrow.style.display = 'none'; // Hide the previous arrow

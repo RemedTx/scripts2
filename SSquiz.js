@@ -458,6 +458,61 @@ function displayDifferentNumber(text1, text2) {
     }
 }
 
+//Same for slide 23 (with variation)
+function displayDifferentNumber2(text1, text2) {
+    let numberToDisplay;
+    
+    if (text1 === 'Male') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.26 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.97 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 6.83 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 6.81 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.24 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.45 hr';
+        }
+    } else if (text1 === 'Female') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.17 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.73 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 7.08 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 7.10 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.44 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.46 hr';
+        }
+    } else {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.22 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.85 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 6.96 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 6.96 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.34 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.46 hr';
+        }
+    }
+    
+    // Display the numberToDisplay in the 'average-time-asleep' div
+    const averageTimeDiv = document.getElementById('average-time-asleep');
+    if (averageTimeDiv) {
+        averageTimeDiv.textContent = numberToDisplay;
+    }
+}
+
 function retrieveAndShowData() {
     const currentSlideIndex = getCurrentSlideIndex();
     const selectedGender = document.querySelector('input[name="16"]:checked');
@@ -467,19 +522,17 @@ function retrieveAndShowData() {
     const sexAgeDiv = document.getElementById('sex-age');
 
     if (sexAgeDiv) {
-        console.log ("sex-agediv found");
         if (currentSlideIndex === 20) {
-            console.log ("on the right slide");
             if (selectedGender && selectedAge) {
-                console.log("Selected Gender:", text1);
-                console.log("Selected Age:", text2);
+
                 if (text1 === "Other") {                  
-                    sexAgeDiv.textContent = `The average User in their ${text2} takes`;
-                    console.log ("sex-age is", sexAgeDiv);
+                    sexAgeDiv.textContent = `The average person in their ${text2} takes`;
                     displayDifferentNumber(text1, text2);
-                } else {
-                    sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-                    console.log ("sex-age is", sexAgeDiv);
+                } else if (text1 === "Male"){
+                    sexAgeDiv.textContent = `The average man in their ${text2} takes`;
+                    displayDifferentNumber(text1, text2);
+                } else if (text1 === "Female"){
+                    sexAgeDiv.textContent = `The average woman in their ${text2} takes`;         
                     displayDifferentNumber(text1, text2);
                 }
             } else {
@@ -501,20 +554,18 @@ function retrieveAndShowData2() {
     const sexAgeDiv = document.getElementById('sex-age2');
 
     if (sexAgeDiv) {
-        console.log ("sex-agediv found");
         if (currentSlideIndex === 23) {
-            console.log ("on the right slide");
             if (selectedGender && selectedAge) {
-                console.log("Selected Gender:", text1);
-                console.log("Selected Age:", text2);
+
                 if (text1 === "Other") {                  
-                    sexAgeDiv.textContent = `The average User in their ${text2} takes`;
-                    console.log ("sex-age is", sexAgeDiv);
-                    //displayDifferentNumber2(text1, text2);
-                } else {
-                    sexAgeDiv.textContent = `The average ${text1} in their ${text2} takes`;
-                    console.log ("sex-age is", sexAgeDiv);
-                    //displayDifferentNumber2(text1, text2);
+                    sexAgeDiv.textContent = `The average person in their ${text2} takes`;               
+                    displayDifferentNumber2(text1, text2);
+                } else if (text1 === "Male"){
+                    sexAgeDiv.textContent = `The average man in their ${text2} takes`;
+                    displayDifferentNumber2(text1, text2);
+                } else if (text1 === "Female"){
+                    sexAgeDiv.textContent = `The average woman in their ${text2} takes`;         
+                    displayDifferentNumber2(text1, text2);
                 }
             } else {
                 console.log("Data retrieval failed or element not found.");

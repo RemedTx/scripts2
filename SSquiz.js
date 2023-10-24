@@ -492,18 +492,18 @@ sliderContainer.addEventListener("transitionend", function () {
 
 function displayDataInTimeAsleepDisplay() {
     const currentSlideIndex = getCurrentSlideIndex();
-    console.log("Current Slide Index: ", currentSlideIndex); // Check if the function is triggered when expected
+    console.log("Current Slide Index: ", currentSlideIndex);
 
     if (currentSlideIndex === 23) {
         const slide22 = document.querySelector('.w-slide:nth-child(22)');
-        console.log("Slide 22: ", slide22); // Check if slide 22 is retrieved correctly
+        console.log("Slide 22: ", slide22);
         if (slide22) {
-            const data22Input = slide22.querySelector('input[data-purpose="time-asleep-input"]');
-            console.log("Data 22 Input: ", data22Input); // Check if the input is retrieved correctly
+            const data22Input = slide22.querySelector('.number-input'); // Using the class for selection
+            console.log("Data 22 Input: ", data22Input);
             if (data22Input) {
                 const data22 = data22Input.value;
                 const timeAsleepDisplay = document.getElementById('time-asleep-display');
-                console.log("Total Time Asleep: ", data22); // Check if the data is retrieved correctly
+                console.log("Total Time Asleep: ", data22);
                 timeAsleepDisplay.textContent = data22;
             } else {
                 console.error("No data input found on slide 22");
@@ -513,6 +513,7 @@ function displayDataInTimeAsleepDisplay() {
         }
     }
 }
+
 
 
 

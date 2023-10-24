@@ -687,6 +687,7 @@ $('#final-button').on('click', function() {
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
    // Hide the previous arrow
+    console.log (leftArrow);
     leftArrow.style.display = 'none';
 
     

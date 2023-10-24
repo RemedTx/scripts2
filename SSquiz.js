@@ -672,8 +672,21 @@ function validateEmailForm() {
         }
         error = "";
         goToNextSlide(this);
-    }
-     
+
+        // Retrieve the email address and add it as a hidden field
+        const userEmail = emailInputs[0].value;
+        const hiddenEmailField = document.createElement("input");
+        hiddenEmailField.setAttribute("type", "hidden");
+        hiddenEmailField.setAttribute("name", "user_email");
+        hiddenEmailField.setAttribute("value", userEmail);
+
+        // Append the hidden field to the form
+        const formElement = document.querySelector("form");
+        if (formElement) {
+            formElement.appendChild(hiddenEmailField);
+        }
+        
+    }    
      else {
      alert(error);
      }

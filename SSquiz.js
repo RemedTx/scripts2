@@ -460,6 +460,7 @@ function displayDifferentNumber(text1, text2) {
 }
 
 function retrieveAndShowData() {
+    console.log ("Show data activated");
     const currentSlideIndex = getCurrentSlideIndex();
     const selectedGender = document.querySelector('input[name="16"]:checked');
     const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
@@ -468,7 +469,9 @@ function retrieveAndShowData() {
     const sexAgeDiv = document.getElementById('sex-age');
 
     if (sexAgeDiv) {
+        console.log ("sex-agediv found");
         if (currentSlideIndex === 20 || currentSlideIndex === 23) {
+            console.log ("on the right slide");
             if (selectedGender && selectedAge) {
                 console.log("Selected Gender:", text1);
                 console.log("Selected Age:", text2);

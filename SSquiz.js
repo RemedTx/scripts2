@@ -255,12 +255,12 @@ sliderContainer.addEventListener("transitionend", updateTitle);
 // Initialize the title based on the initial slide
 updateTitle();
 
-// Function to hide the arrow on the first slide
+// Function to hide the arrow on the first slide &33rd
 function hideArrowOnFirstSlide() {
     const currentSlideIndex = getCurrentSlideIndex();
     const arrowElement = document.getElementById("previous-button");
     
-    if (currentSlideIndex === 1 ) { // Check if it's the first slide
+    if (currentSlideIndex === 1 || currentSlideIndex === 33) { // Check if it's the first slide
         arrowElement.style.display = "none"; // Hide the arrow
     } else {
         arrowElement.style.display = "block"; // Show the arrow for other slides
@@ -388,6 +388,246 @@ sliderContainer.addEventListener("transitionend", function () {
     }
 });
 
+// Function to display data in the fall-asleep-display div on slide 20
+function displayDataInFallAsleepDisplay() {
+    const data = document.getElementById('field-2').value;
+    const fallAsleepDisplay = document.getElementById('fall-asleep-display');
+    console.log("Fall Asleep in", data);
+    fallAsleepDisplay.textContent = "⏱ " + data + " min";
+}
+
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex2 = getCurrentSlideIndex();   
+    
+    if (currentSlideIndex2 === 20) {
+        displayDataInFallAsleepDisplay();
+    }
+});
+
+function displayDifferentNumber(text1, text2) {
+    let numberToDisplay;
+    
+    if (text1 === 'Male') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 17.1 min';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 17.3 min';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 12.1 min';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 11.5 min';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 12.1 min';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 12.3 min';
+        }
+    } else if (text1 === 'Female') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 14.7 min';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 13.7 min';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 12.2 min';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 12.7 min';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 13.6 min';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 17.8 min';
+        }
+    } else {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 15.9 min';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 15.5 min';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 12.2 min';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 12.1 min';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 12.85 min';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 15.05 min';
+        }
+    }
+    
+    // Display the numberToDisplay in the 'average-time' div
+    const averageTimeDiv = document.getElementById('average-time');
+    if (averageTimeDiv) {
+        averageTimeDiv.textContent = numberToDisplay;
+    }
+}
+
+//Same for slide 23 (with variation)
+function displayDifferentNumber2(text1, text2) {
+    let numberToDisplay;
+    
+    if (text1 === 'Male') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.26 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.97 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 6.83 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 6.81 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.24 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.45 hr';
+        }
+    } else if (text1 === 'Female') {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.17 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.73 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 7.08 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 7.10 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.44 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.46 hr';
+        }
+    } else {
+        if (text2 === '20s') {
+            numberToDisplay = '⏱ 7.22 hr';
+        } else if (text2 === '30s') {
+            numberToDisplay = '⏱ 6.85 hr';
+        } else if (text2 === '40s') {
+            numberToDisplay = '⏱ 6.96 hr';
+        } else if (text2 === '50s') {
+            numberToDisplay = '⏱ 6.96 hr';
+        } else if (text2 === '60s') {
+            numberToDisplay = '⏱ 7.34 hr';
+        } else if (text2 === '70+') {
+            numberToDisplay = '⏱ 7.46 hr';
+        }
+    }
+    
+    // Display the numberToDisplay in the 'average-time-asleep' div
+    const averageTimeDiv = document.getElementById('average-time-asleep');
+    if (averageTimeDiv) {
+        averageTimeDiv.textContent = numberToDisplay;
+    }
+}
+
+function retrieveAndShowData() {
+    const currentSlideIndex = getCurrentSlideIndex();
+    const selectedGender = document.querySelector('input[name="16"]:checked');
+    const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
+    const selectedAge = document.querySelector('input[name="17"]:checked');
+    const text2 = selectedAge ? selectedAge.nextElementSibling.textContent.trim() : "";
+    const sexAgeDiv = document.getElementById('sex-age');
+
+    if (sexAgeDiv) {
+        if (currentSlideIndex === 20) {
+            if (selectedGender && selectedAge) {
+
+                if (text1 === "Other") {                  
+                    sexAgeDiv.textContent = `The average person in their ${text2} takes`;
+                    displayDifferentNumber(text1, text2);
+                } else if (text1 === "Male"){
+                    sexAgeDiv.textContent = `The average man in their ${text2} takes`;
+                    displayDifferentNumber(text1, text2);
+                } else if (text1 === "Female"){
+                    sexAgeDiv.textContent = `The average woman in their ${text2} takes`;         
+                    displayDifferentNumber(text1, text2);
+                }
+            } else {
+                console.log("Data retrieval failed or element not found.");
+            }
+        }
+    } else {
+        console.log("Sex-age div not found.");
+    }
+}
+
+//Same for slide 23 (same elements do not show twice)
+function retrieveAndShowData2() {
+    const currentSlideIndex = getCurrentSlideIndex();
+    const selectedGender = document.querySelector('input[name="16"]:checked');
+    const text1 = selectedGender ? selectedGender.nextElementSibling.textContent.trim() : "";
+    const selectedAge = document.querySelector('input[name="17"]:checked');
+    const text2 = selectedAge ? selectedAge.nextElementSibling.textContent.trim() : "";
+    const sexAgeDiv = document.getElementById('sex-age2');
+
+    if (sexAgeDiv) {
+        if (currentSlideIndex === 23) {
+            if (selectedGender && selectedAge) {
+
+                if (text1 === "Other") {                  
+                    sexAgeDiv.textContent = `The average person in their ${text2} sleeps`;               
+                    displayDifferentNumber2(text1, text2);
+                } else if (text1 === "Male"){
+                    sexAgeDiv.textContent = `The average man in their ${text2} sleeps`;
+                    displayDifferentNumber2(text1, text2);
+                } else if (text1 === "Female"){
+                    sexAgeDiv.textContent = `The average woman in their ${text2} sleeps`;         
+                    displayDifferentNumber2(text1, text2);
+                }
+            } else {
+                console.log("Data retrieval failed or element not found.");
+            }
+        }
+    } else {
+        console.log("Sex-age div not found.");
+    }
+}
+// Add an event listener to the slider container to detect when the slide changes
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 20) {
+        retrieveAndShowData();
+    }
+});
+//SAME for slide 23
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();
+    if (currentSlideIndex === 23) {
+        retrieveAndShowData2();
+    }
+});
+
+
+
+function displayDataInTimeAsleepDisplay() {
+    const currentSlideIndex = getCurrentSlideIndex();
+    console.log("Current Slide Index: ", currentSlideIndex);
+
+    if (currentSlideIndex === 23) {
+        const slide22 = document.querySelector('.w-slide:nth-child(22)');
+        console.log("Slide 22: ", slide22);
+        if (slide22) {
+            const data22Input = slide22.querySelector('.number-input'); // Using the class for selection
+            console.log("Data 22 Input: ", data22Input);
+            if (data22Input) {
+                const data22 = data22Input.value;
+                const timeAsleepDisplay = document.getElementById('time-asleep-display');
+                console.log("Total Time Asleep: ", data22);
+                timeAsleepDisplay.textContent = "⏱ " + data22 + " hr";
+            } else {
+                console.error("No data input found on slide 22");
+            }
+        } else {
+            console.error("Slide 22 not found");
+        }
+    }
+}
+
+
+
+
+sliderContainer.addEventListener("transitionend", function () {
+    const currentSlideIndex = getCurrentSlideIndex();   
+
+    if (currentSlideIndex === 23) {
+        displayDataInTimeAsleepDisplay();
+        
+    }
+});
+
 
 
 // Post function
@@ -423,7 +663,7 @@ function validateEmailForm() {
     if (emailInputs.length > 0 && !emailInputs.some((el) => $(el).val().indexOf('@') !== -1 && $(el).val().indexOf('.') !== -1)) {
         error = "Please enter a valid email";
     }
-    // If not error -> submit form
+    // If no error -> submit form
     if (!error) {
         sendSlack(true, emailInputs[0].value);
         try {
@@ -432,31 +672,50 @@ function validateEmailForm() {
             console.log(err);
         }
         error = "";
+
+        // Add email to the URL
+        //const userEmail = emailInputs[0].value;
+        //const urlParams = new URLSearchParams(window.location.search);
+        //urlParams.append('user_email', userEmail);
+        //const newUrl = window.location.pathname + "?" + urlParams.toString();
+        //history.pushState(null, '', newUrl);
+
         goToNextSlide(this);
+        // Store the email in session storage
+        sessionStorage.setItem('user_email', emailInputs[0].value);
+        
+    } else {
+        alert(error);
     }
-     
-     else {
-     alert(error);
-     }
 }
 const lottieSrc = "https://lottie.host/186d5b64-22b9-4c26-9068-8d0b40cbef57/UC2tpZmJA6.json"
+
+sliderContainer.addEventListener("transitionend", function () {
+    window.scrollTo(0, 0); // Scrolls the screen to the top at each new slide
+});
 
 // Just before last view : progress bar animation
 $('#lottie-container').html(`<lottie-player autoplay mode="normal" speed=1 style="width: 400px"></lottie-player>`);
 $('#final-button').on('click', function() {
+   
     // Display animation container
     let loaderContainer = document.getElementById("final-progress");
     loaderContainer.style.display = 'block';
-   // Hide the previous arrow
-    leftArrow.style.display = 'none';
-
-    
+    // Hide the previous arrow
+    const leftArrow = document.getElementById("previous-button");
+    if (leftArrow) {
+        leftArrow.style.display = 'none';
+    }
     // Play animation
     const player = document.querySelector("lottie-player");
     player.load(lottieSrc);
     setTimeout(() => {
+        
+        
         loaderContainer.style.display = 'none';
-        leftArrow.style.display = 'block'; // Show the previous arrow
+        if (leftArrow) {
+            leftArrow.style.display = 'none'; // Hide the previous arrow
+        }
         goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })

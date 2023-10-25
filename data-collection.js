@@ -1,9 +1,11 @@
 // Initialize the Google Sheets API
 function initClient() {
+    console.log("Initializing Google Sheets API...");
     gapi.client.init({
         'apiKey': 'f551982d0a0f3583f227d2592c8b833d60cc7c72',
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(function() {
+        console.log("Google Sheets API initialized successfully.");
         // Use the Google Sheets API
         storeDataToSheets();
     });
@@ -11,6 +13,7 @@ function initClient() {
 
 // Store the data to the Google Sheets document
 function storeDataToSheets() {
+    console.log("Storing data to Google Sheets...");
     // Define your spreadsheet ID and range
     const spreadsheetId = '1y2sY1CB73DVu-cxcvnYy4S5XG7Z8RLNdOKk70FqWzNg';
     let range = 'Sheet1!A1:C1'; // Adjust the range as needed
@@ -44,4 +47,5 @@ function storeDataToSheets() {
 }
 
 // Call the initClient function
+console.log("Initializing client...");
 initClient();

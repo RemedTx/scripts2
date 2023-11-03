@@ -460,3 +460,60 @@ $('#final-button').on('click', function() {
         goToNextSlide(); // Call the function to go to the next slide
     }, 15000);
 })
+
+//test data push
+
+formDataUrl = "https://europe-west1-test-firebase-1240d.cloudfunctions.net/testFormSubmit";
+  const FormAbandonmentTracker2 = {
+      init: function(form_id) {
+      	this.$date = new Date().toLocaleString();
+        this.$formHistory = {};
+        this.$form = document.getElementById(form_id);
+        this.attachEvents();
+      },
+      attachEvents: function() {
+        let that = this;
+        this.$form.querySelectorAll('select').forEach(function(el) {
+          el.addEventListener('change', function(e) { return that.onFieldChange(e); });
+        });
+        this.$form.querySelectorAll('input, textarea').forEach(function(el) {
+          el.addEventListener('input', function(e) { return that.onFieldChange(e); });
+        });
+        window.addEventListener('visibilitychange', function(e) { return that.onFormAbandonment() } );
+      },
+      onFieldChange: function(event) {
+      	// Gets the index of the question slide
+        let slide = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+        let index = slide.getAttribute("aria-label").split(" ")[0];
+        let answer = "";
+        if (event.target.type == "checkbox") {
+        	const inputs = $('input:not([aria-hidden])');
+          const checkboxes = $(inputs).filter('[type="checkbox"]').filter(':checked').toArray();
+          answer = checkboxes.map((el) => {return el.value;}).toString();
+        } else { 
+          answer = event.target.value; 
+        }
+        this.$formHistory[parseInt(index)] = answer;
+      },
+      onFormAbandonment: function() {
+        if(!this.$formIsSubmitted  && document.visibilityState == "hidden") {
+          this.sendEvents();
+        }
+      },
+      sendEvents: function() {
+        let lastQuestion = Math.max(...Object.keys(this.$formHistory));
+        const answers = Object.entries(this.$formHistory).map(([key, value]) => `${value}`);
+
+        // Send detailed answers
+        try {
+            navigator.sendBeacon(formDataUrl, JSON.stringify({sheet: 4, data: [this.$date, ...answers]}));
+            navigator.sendBeacon(formDataUrl, JSON.stringify({sheet: 1, data: [this.$date, lastQuestion]}));
+        } catch (err) {
+            console.log(err);
+        }
+      },
+    };
+
+  (function(){
+    FormAbandonmentTracker2.init('onboarding-form');
+  })();
